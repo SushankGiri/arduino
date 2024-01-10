@@ -1,0 +1,67 @@
+
+int motor_b_f = 3;
+int motor_b_b = 2;
+int motor_a_f = 5;
+int motor_a_b = 4;
+void setup() {
+  step(2);
+  turnleft();
+  turnright();
+  back(2);
+
+}
+
+void loop() {
+
+}
+
+void step(int seconds){
+  low();
+
+  digitalWrite(motor_a_f, HIGH);
+  digitalWrite(motor_b_f, HIGH);
+  delay(seconds*1000);
+
+  low();
+}
+
+
+void back(int seconds){
+  low();
+
+  digitalWrite(motor_a_b, HIGH);
+  digitalWrite(motor_b_b, HIGH);
+  delay(seconds*1000);
+
+  low();
+}
+
+
+void turnleft(){
+  low();
+
+  digitalWrite(motor_a_b, HIGH);
+  digitalWrite(motor_b_f, HIGH);
+  delay(125);
+
+  low();
+}
+
+
+void turnright(){
+  low();
+
+  digitalWrite(motor_a_f, HIGH);
+  digitalWrite(motor_b_b, HIGH);
+  delay(125);
+
+  low();
+}
+
+
+void low(){
+  digitalWrite(motor_a_f, LOW);
+  digitalWrite(motor_a_b, LOW);
+  digitalWrite(motor_b_f, LOW);
+  digitalWrite(motor_b_b, LOW);
+}
