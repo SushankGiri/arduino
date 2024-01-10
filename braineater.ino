@@ -70,7 +70,7 @@ void loop() {
       } 
   
       distance = detect();
-      if (distance <= 15){
+      while (distance <= 40){
         digitalWrite(a_forward,LOW);
         digitalWrite(a_backward,HIGH);
         digitalWrite(b_forward,HIGH);
@@ -80,15 +80,26 @@ void loop() {
         digitalWrite(a_backward,LOW);
         digitalWrite(b_forward,LOW);
         digitalWrite(b_backward,LOW);
-      }else {
-        digitalWrite(a_forward,HIGH);
-        digitalWrite(a_backward,LOW);
-        digitalWrite(b_forward,HIGH);
-        digitalWrite(b_backward,LOW);
-        delay(10);
-
+        if(Serial.available())
+        {
+          t = Serial.read();
+        } 
+        if (t=='v')
+        {
+          break;
+        }
       }
-      if (t=='v'){
+      digitalWrite(a_forward,HIGH);
+      digitalWrite(a_backward,LOW);
+      digitalWrite(b_forward,HIGH);
+      digitalWrite(b_backward,LOW);
+      delay(10);
+      if (t=='v')
+      {
+        break;
+      }
+      if (t=='v')
+      {
         break;
       }
     
